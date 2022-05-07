@@ -1,0 +1,42 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Main {
+    public static void main(String[] args) {
+        JFrame f=new JFrame("Ventana Server");
+        final JTextField tf=new JTextField();
+        final JTextField ttf=new JTextField();
+        ttf.setBounds(180, 50, 150, 30);
+        tf.setBounds(180,100, 150,30);
+        JButton b=new JButton("Enviar");
+        b.setBounds(300,150,95,30);
+        JButton bescuchar=new JButton("Escuchar");
+        bescuchar.setBounds(100,150,96,30);
+        JLabel titulo=new JLabel("DIOS");
+        titulo.setBounds(250,10, 600,30);
+        JLabel estado=new JLabel("Estado:");
+        estado.setBounds(150,10,200, 50);
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                tf.setText("Como estamos?");
+            }
+
+        });
+        bescuchar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                ttf.setText("Hola");
+
+            }
+        });
+                //Añade objetos
+        f.add(titulo); f.add(bescuchar); f.add(ttf);
+        f.add(b);f.add(tf); f.add(estado);
+        //Le da un tamaño a la ventana
+        f.setSize(400,400);
+        f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH); //Maximiza los bordes
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+}
+
+

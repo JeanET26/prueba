@@ -1,0 +1,83 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+
+public class Main {
+
+    public static void main(String[] args) throws UnknownHostException {
+
+        supah objsupah = new supah();
+
+        objsupah.inicializar();
+
+        ip = InetAddress.getLocalHost();
+
+        ipLabel.setText("IP Local: "+ ip.getHostAddress());
+
+
+    }
+
+
+    public static JLabel ipLabel;
+    public static InetAddress ip;
+    public static class supah{
+
+        public void supah() { }
+
+        public void inicializar() {
+            JFrame f = new JFrame("Ventana Cliente");
+            final JTextField tf = new JTextField();
+            final JTextField ttf = new JTextField();
+            ttf.setBounds(180, 50, 150, 30);
+            tf.setBounds(180, 100, 150, 30);
+            JButton b = new JButton("Enviar");
+            b.setBounds(300, 150, 95, 30);
+            JButton salir = new JButton("Salir");
+            salir.setBounds(400, 150, 95, 30);
+            JButton bconnect = new JButton("Conectar");
+            bconnect.setBounds(100, 150, 95, 30);
+           ipLabel = new JLabel("datos:");
+           ipLabel.setBounds(200,10,200,50);
+            JLabel estado = new JLabel("Estado:");
+            estado.setBounds(150, 10, 200, 50);
+            b.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    tf.setText("Como estamos?");
+                }
+
+            });
+            bconnect.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    ttf.setText("Hola");
+
+                }
+            });
+
+            salir.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    f.dispatchEvent(new WindowEvent(f, WindowEvent.WINDOW_CLOSING));
+
+                }
+            });
+            //Añade objetos
+            f.add(salir);
+            f.add(ipLabel);
+            f.add(bconnect);
+            f.add(ttf);
+            f.add(b);
+            f.add(tf);
+            f.add(estado);
+            //Le da un tamaño a la ventana
+            f.setSize(400, 400);
+            f.setExtendedState(f.getExtendedState() | JFrame.MAXIMIZED_BOTH); //Maximiza los bordes
+            f.setLayout(null);
+            f.setVisible(true);
+
+
+        }
+    }
+
+
+}
